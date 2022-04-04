@@ -15,12 +15,12 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 @client.command()
-async def dadlink(ctx, id: int):
+async def dados(ctx, id: int):
   await ctx.send(f"https://opensea.io/assets/0xecdd2f733bd20e56865750ebce33f17da0bee461/{id}")
   return
 
 @client.command()
-async def momlink(ctx, id: int):
+async def momos(ctx, id: int):
   await ctx.send(f"https://opensea.io/assets/0xecdd2f733bd20e56865750ebce33f17da0bee461/{id}")
   return
 
@@ -33,5 +33,10 @@ async def dad(ctx, id: int):
 async def mom(ctx, id: int):
   await ctx.send(f"https://bafybeiao53abkdfpkdtrtxdumt3vn3al6q3cnb7hyzjnqep4milymr6kgi.ipfs.dweb.link/{id}.png")
   return
+
+@client.event
+async def on_message(message):
+  if message.author == client.user:
+    return
 
 client.run(os.getenv('TOKEN'))
